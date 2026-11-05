@@ -12,6 +12,8 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.view.WindowCompat.enableEdgeToEdge
 import androidx.core.view.WindowCompat.getInsetsController
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.vladpen.cams.MainApp.Companion.context
 import com.vladpen.cams.R
 
@@ -27,20 +29,26 @@ object Effects {
         windowInsetsController.isAppearanceLightNavigationBars = false
     }
 
-    fun delayedFadeOut(views: Array<View>, delay: Long = 3000) {
+    fun delayedFadeOut(views: Array<View>, window: Window? = null, delay: Long = 3000) {
         handler = Handler(Looper.getMainLooper())
         handler?.postDelayed({
-            fadeOut(views)
+            fadeOut(views, window)
         }, delay)
     }
 
-    fun fadeOut(views: Array<View>, duration: Long = 500) {
+    fun fadeOut(views: Array<View>, window: Window? = null, duration: Long = 500) {
         animation = AnimationUtils.loadAnimation(context, android.R.anim.fade_out)
         animation?.duration = duration
         animation?.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationEnd(a: Animation) {
                 for (view in views)
                     view.visibility = View.GONE
+
+                if (window != null) {
+                    val controller = getInsetsController(window, window.decorView)
+                    controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                    controller.hide(WindowInsetsCompat.Type.systemBars())
+                }
             }
             override fun onAnimationStart(a: Animation) {
             }
