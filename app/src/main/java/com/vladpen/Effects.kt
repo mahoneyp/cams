@@ -37,6 +37,9 @@ object Effects {
     }
 
     fun fadeOut(views: Array<View>, window: Window? = null, duration: Long = 500) {
+        if (window != null) {
+            hideSystemBars(window)
+        }
         animation = AnimationUtils.loadAnimation(context, android.R.anim.fade_out)
         animation?.duration = duration
         animation?.setAnimationListener(object : Animation.AnimationListener {
@@ -45,9 +48,6 @@ object Effects {
                     view.visibility = View.GONE
             }
             override fun onAnimationStart(a: Animation) {
-                if (window != null) {
-                    hideSystemBars(window)
-                }
             }
             override fun onAnimationRepeat(a: Animation) {
             }
