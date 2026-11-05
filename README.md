@@ -101,7 +101,8 @@ height="80">](https://github.com/vladpen/cams/tree/main/app/release)
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 alt="Get it on F-Droid"
 height="80">](https://f-droid.org/packages/com.vladpen.cams/)
-[<img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/icon_small.png" alt="Obtainium" height="80">](https://github.com/ImranR98/Obtainium)
+[<img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/icon_small.png"
+alt="Obtainium" height="80" width="80">](https://github.com/ImranR98/Obtainium)
 
 &nbsp; [<img src="https://user-images.githubusercontent.com/3853013/194689050-e6da2f21-9aa3-4662-9b7d-7293b140f22f.svg"
 alt="Доступно в RuStore"
