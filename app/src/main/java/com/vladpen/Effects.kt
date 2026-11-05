@@ -43,20 +43,43 @@ object Effects {
             override fun onAnimationEnd(a: Animation) {
                 for (view in views)
                     view.visibility = View.GONE
-
-                if (window != null) {
-                    val controller = getInsetsController(window, window.decorView)
-                    controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-                    controller.hide(WindowInsetsCompat.Type.systemBars())
-                }
             }
             override fun onAnimationStart(a: Animation) {
+                if (window != null) {
+                    hideSystemBars(window)
+                }
             }
             override fun onAnimationRepeat(a: Animation) {
             }
         })
         for (view in views)
             view.startAnimation(animation)
+    }
+
+    fun showSystemBars(window: Window) {
+        val controller = getInsetsController(window, window.decorView)
+        controller.show(WindowInsetsCompat.Type.systemBars())
+        if (android.os.Build.VERSION.SDK_INT < 30) {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+        }
+    }
+
+    fun hideSystemBars(window: Window) {
+        val controller = getInsetsController(window, window.decorView)
+        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller.hide(WindowInsetsCompat.Type.systemBars())
+        if (android.os.Build.VERSION.SDK_INT < 30) {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_FULLSCREEN)
+        }
     }
 
     fun toggle(view: LinearLayout, duration: Long = 300) {

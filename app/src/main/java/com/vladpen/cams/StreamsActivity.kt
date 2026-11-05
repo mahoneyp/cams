@@ -291,8 +291,7 @@ class StreamsActivity : AppCompatActivity(), Layout {
 
     private fun initBars() {
         Effects.cancel()
-        val controller = androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
-        controller.show(WindowInsetsCompat.Type.systemBars())
+        Effects.showSystemBars(window)
 
         if (!isGroup) {
             val stream = StreamData.getById(sourceId)

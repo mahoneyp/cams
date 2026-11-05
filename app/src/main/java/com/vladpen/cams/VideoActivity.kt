@@ -226,8 +226,7 @@ class VideoActivity : AppCompatActivity(), Layout, Player {
 
     private fun initBars() {
         Effects.cancel()
-        val controller = androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
-        controller.show(WindowInsetsCompat.Type.systemBars())
+        Effects.showSystemBars(window)
 
         binding.toolbar.root.visibility = View.VISIBLE
         binding.videoBar.root.visibility = View.VISIBLE
