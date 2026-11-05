@@ -226,10 +226,13 @@ class VideoActivity : AppCompatActivity(), Layout, Player {
 
     private fun initBars() {
         Effects.cancel()
+        val controller = androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
+        controller.show(WindowInsetsCompat.Type.systemBars())
+
         binding.toolbar.root.visibility = View.VISIBLE
         binding.videoBar.root.visibility = View.VISIBLE
         if (hideBars) {
-            Effects.delayedFadeOut(arrayOf(binding.toolbar.root, binding.videoBar.root))
+            Effects.delayedFadeOut(arrayOf(binding.toolbar.root, binding.videoBar.root), window)
         }
     }
 

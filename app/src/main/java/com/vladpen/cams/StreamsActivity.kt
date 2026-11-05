@@ -291,6 +291,9 @@ class StreamsActivity : AppCompatActivity(), Layout {
 
     private fun initBars() {
         Effects.cancel()
+        val controller = androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
+        controller.show(WindowInsetsCompat.Type.systemBars())
+
         if (!isGroup) {
             val stream = StreamData.getById(sourceId)
             if (stream != null && stream.sftp != null) {
@@ -303,7 +306,7 @@ class StreamsActivity : AppCompatActivity(), Layout {
         binding.toolbar.root.visibility = View.VISIBLE
         binding.llStreamsBar.visibility = View.VISIBLE
         if (hideBars) {
-            Effects.delayedFadeOut(arrayOf(binding.toolbar.root, binding.llStreamsBar))
+            Effects.delayedFadeOut(arrayOf(binding.toolbar.root, binding.llStreamsBar), window)
         }
     }
 
