@@ -40,11 +40,10 @@ interface Layout {
         val videoAspectRatio = ASPECT_RATIO * columnCount / rowCount
         if (rootAspectRatio > videoAspectRatio) { // vertical margins
             frameHeight = rootHeight / rowCount
-            hideBars = true
         } else { // horizontal margins
             frameHeight = ((rootWidth / columnCount) / ASPECT_RATIO).toInt()
-            hideBars = false
         }
+        hideBars = rootWidth > rootHeight
         val frameWidth = (frameHeight * ASPECT_RATIO).toInt()
 
         for ((i, f) in fragments.withIndex()) {
@@ -80,12 +79,11 @@ interface Layout {
         if (rootAspectRatio > ASPECT_RATIO) { // vertical margins
             frameHeight = rootHeight
             frameWidth = (frameHeight * ASPECT_RATIO).toInt()
-            hideBars = true
         } else { // horizontal margins
             frameWidth = rootWidth
             frameHeight = (frameWidth / ASPECT_RATIO).toInt()
-            hideBars = false
         }
+        hideBars = rootWidth > rootHeight
         val params = layout.layoutParams
         params.width = frameWidth
         params.height = frameHeight
