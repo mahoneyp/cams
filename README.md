@@ -47,7 +47,10 @@ APK файл можно собрать самостоятельно, скача�
 [32 бит](https://github.com/vladpen/cams/raw/main/app/release/cams-armeabi-v7a-release.apk)),
 установить с помощью [F-Droid](https://f-droid.org/ru/packages/com.vladpen.cams/) (только для 64-битных платформ)
 или [RuStore](https://www.rustore.ru/catalog/app/com.vladpen.cams).
-Поддерживается 64-битная (arm64-v8a) и 32-битная (armeabi-v7a) архитектура, а также x86-64 и x86.
+Также вы можете установить и обновлять это приложение с помощью [Obtainium](https://github.com/ImranR98/Obtainium).
+В папке [app/release](https://github.com/vladpen/cams/tree/main/app/release)
+находятся файлы для 64-битной (arm64-v8a) и 32-битной (armeabi-v7a) архитектуры ARM,
+а также x86-64 и x86.
 
 ## Настройка
 
@@ -98,6 +101,7 @@ height="80">](https://github.com/vladpen/cams/tree/main/app/release)
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 alt="Get it on F-Droid"
 height="80">](https://f-droid.org/packages/com.vladpen.cams/)
+[<img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/icon_small.png" alt="Obtainium" height="80">](https://github.com/ImranR98/Obtainium)
 
 &nbsp; [<img src="https://user-images.githubusercontent.com/3853013/194689050-e6da2f21-9aa3-4662-9b7d-7293b140f22f.svg"
 alt="Доступно в RuStore"
