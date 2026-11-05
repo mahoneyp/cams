@@ -57,7 +57,8 @@
     <string name="about_text">
         <![CDATA[
             <h1>Cams, version %1$s</h1><br/>
-            Copyright &copy; %2$s vladpen under MIT license<br/><br/>
+            Copyright &copy; %2$s vladpen under MIT license<br/>
+            this app was created by vladpen with customizations by mahoneyp<br/><br/>
             <a href="https://github.com/vladpen/cams">Home page</a><br/><br/>
             <a href="https://github.com/vladpen/cams/issues">
                 Raporty o błędach i narzędzie do śledzenia problemów</a>
