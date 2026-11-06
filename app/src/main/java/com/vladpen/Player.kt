@@ -36,6 +36,8 @@ interface Player {
         if (SourceData.getStretch()) {
             mediaPlayer.videoScale = MediaPlayer.ScaleType.SURFACE_FILL
         }
+        
+        mediaPlayer.videoScale = MediaPlayer.ScaleType.SURFACE_FILL
 
         mediaPlayer.setEventListener {
             when (it.type) {
