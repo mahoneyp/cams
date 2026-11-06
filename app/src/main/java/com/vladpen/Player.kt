@@ -20,8 +20,6 @@ interface Player {
             "--network-caching=100",
             "--drop-late-frames",
             "--skip-frames",
-            "--clock-jitter=0",
-            "--clock-synchro=0",
             "--image-duration=1",  // for "events" slideshow
         )
         if (tcp)
