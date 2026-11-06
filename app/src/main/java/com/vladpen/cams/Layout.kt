@@ -35,16 +35,29 @@ interface Layout {
         val columnCount = ceil(sqrt(cellQty)).toInt()
         val rowCount = ceil(fragments.count() / columnCount.toDouble()).toInt()
 
-        val frameHeight: Int
         val rootAspectRatio = rootWidth.toFloat() / rootHeight.toFloat()
         val videoAspectRatio = ASPECT_RATIO * columnCount / rowCount
-        if (rootAspectRatio > videoAspectRatio) { // vertical margins
-            frameHeight = rootHeight / rowCount
-        } else { // horizontal margins
-            frameHeight = ((rootWidth / columnCount) / ASPECT_RATIO).toInt()
-        }
         hideBars = rootWidth > rootHeight
-        val frameWidth = (frameHeight * ASPECT_RATIO).toInt()
+
+        val frameHeight: Int
+        val frameWidth: Int
+        if (hideBars) {
+            if (rootAspectRatio > videoAspectRatio) {
+                frameWidth = rootWidth / columnCount
+                frameHeight = (frameWidth / ASPECT_RATIO).toInt()
+            } else {
+                frameHeight = rootHeight / rowCount
+                frameWidth = (frameHeight * ASPECT_RATIO).toInt()
+            }
+        } else {
+            if (rootAspectRatio > videoAspectRatio) { // vertical margins
+                frameHeight = rootHeight / rowCount
+                frameWidth = (frameHeight * ASPECT_RATIO).toInt()
+            } else { // horizontal margins
+                frameWidth = rootWidth / columnCount
+                frameHeight = (frameWidth / ASPECT_RATIO).toInt()
+            }
+        }
 
         for ((i, f) in fragments.withIndex()) {
             val layout = f.getFrame()
@@ -72,18 +85,28 @@ interface Layout {
 
     fun resizeVideo(layout: View) {
         val (rootWidth, rootHeight) = getRootSize()
+        hideBars = rootWidth > rootHeight
 
         val frameWidth: Int
         val frameHeight: Int
         val rootAspectRatio = rootWidth.toFloat() / rootHeight.toFloat()
-        if (rootAspectRatio > ASPECT_RATIO) { // vertical margins
-            frameHeight = rootHeight
-            frameWidth = (frameHeight * ASPECT_RATIO).toInt()
-        } else { // horizontal margins
-            frameWidth = rootWidth
-            frameHeight = (frameWidth / ASPECT_RATIO).toInt()
+        if (hideBars) {
+            if (rootAspectRatio > ASPECT_RATIO) {
+                frameWidth = rootWidth
+                frameHeight = (frameWidth / ASPECT_RATIO).toInt()
+            } else {
+                frameHeight = rootHeight
+                frameWidth = (frameHeight * ASPECT_RATIO).toInt()
+            }
+        } else {
+            if (rootAspectRatio > ASPECT_RATIO) { // vertical margins
+                frameHeight = rootHeight
+                frameWidth = (frameHeight * ASPECT_RATIO).toInt()
+            } else { // horizontal margins
+                frameWidth = rootWidth
+                frameHeight = (frameWidth / ASPECT_RATIO).toInt()
+            }
         }
-        hideBars = rootWidth > rootHeight
         val params = layout.layoutParams
         params.width = frameWidth
         params.height = frameHeight
