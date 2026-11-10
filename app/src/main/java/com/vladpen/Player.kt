@@ -16,8 +16,8 @@ interface Player {
     fun initPlayer(context: Context, view: VLCVideoLayout, tcp: Boolean = true) {
         val options = arrayListOf(
             "--file-caching=300",
-            "--live-caching=100",
-            "--network-caching=100",
+            "--live-caching=0",
+            "--network-caching=0",
             "--drop-late-frames",
             "--skip-frames",
             "--image-duration=1",  // for "events" slideshow
